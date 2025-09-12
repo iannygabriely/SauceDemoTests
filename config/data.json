@@ -2,5 +2,9 @@
 	"env": "QA",
 	"loginPageURL": "https://www.saucedemo.com",
 	"user": "standard_user",
-	"password": "secret_sauce"
+	"password": "secret_sauce",
+	"productsToAdd": [
+    "Sauce Labs Backpack",
+    "Sauce Labs Bike Light"
+  ]
 }
