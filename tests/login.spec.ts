@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import { LoginPage } from "../pages/login-page";
 import { ConfigurationReader } from "../utils/configuration-reader";
 
-test.describe("Login - Sauce Demo", () => {
+test.describe("Login", () => {
 	test("Login com credenciais válidas", async ({ page }) => {
 		const loginPage = new LoginPage(page);
 		const username = ConfigurationReader().user;

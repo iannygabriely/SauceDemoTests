@@ -27,4 +27,22 @@ export class InventoryPage {
 		const names = await this.productNames.allTextContents();
 		return names.map(name => name.trim());
 	}
+
+	async addProductsToCart(productNames: string[]): Promise<{ titles: string[], prices: number[] }> {
+		const titles: string[] = [];
+		const prices: number[] = [];
+
+		for (const productName of productNames) {
+			const titleText = await this.page.locator(`.inventory_item:has-text("${productName}") .inventory_item_name`).textContent();
+			titles.push(titleText!.trim());
+
+			const priceText = await this.page.locator(`.inventory_item:has-text("${productName}") .inventory_item_price`).textContent();
+			prices.push(parseFloat(priceText!.replace("$", "")));
+
+			const addButton = this.page.locator(`.inventory_item:has-text("${productName}") button[id^="add-to-cart"]`);
+			await addButton.click();
+		}
+
+		return { titles, prices };
+	}
 }
