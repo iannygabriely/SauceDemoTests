@@ -7,6 +7,7 @@ import { ConfigurationReader } from "../utils/configuration-reader";
 test.describe("Validação de Produtos no Carrinho", () => {
     let inventory: InventoryPage;
     let cart: CartPage;
+    let productsToAdd: string[];
 
     test.beforeEach(async ({ page }) => {
         const login = new LoginPage(page);
@@ -15,13 +16,15 @@ test.describe("Validação de Produtos no Carrinho", () => {
 
         inventory = new InventoryPage(page);
         cart = new CartPage(page);
+
+        productsToAdd = ConfigurationReader().productsToAdd;
     });
 
     test("Adicionar produtos ao carrinho e validar nomes e valores", async ({ page }) => {
         const expectedTitles: string[] = [];
         const expectedPrices: number[] = [];
 
-        for (const productName of ConfigurationReader().productsToAdd) {
+        for (const productName of productsToAdd) {
             const titleText = await inventory.page.locator(`.inventory_item:has-text("${productName}") .inventory_item_name`).textContent();
             expectedTitles.push(titleText!.trim());
 
@@ -35,7 +38,7 @@ test.describe("Validação de Produtos no Carrinho", () => {
         await inventory.page.locator(".shopping_cart_link").click();
 
         const itemCount = await cart.getCartItemCount();
-        expect(itemCount).toBe(ConfigurationReader().productsToAdd.length);
+        expect(itemCount).toBe(productsToAdd.length);
 
         const cartTitles = await cart.getCartItemNames();
         expect(cartTitles).toEqual(expectedTitles);

@@ -23,7 +23,7 @@ export class InventoryPage {
 		return prices.map(p => parseFloat(p.replace("$", "")));
 	}
 
-	async getProductNames(page) {
+	async getProductNames(): Promise<string[]> {
 		const names = await this.productNames.allTextContents();
 		return names.map(name => name.trim());
 	}

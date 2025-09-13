@@ -34,7 +34,7 @@ test.describe("Ordenação de Produtos", () => {
 		const inventory = new InventoryPage(page);
 
 		await inventory.sortBy("az");
-		const productNames = await inventory.getProductNames(page);
+		const productNames = await inventory.getProductNames();
 		const sortedByNameAsc = [...productNames].sort((a, b) => a.localeCompare(b));
 
 		expect(productNames).toEqual(sortedByNameAsc);
@@ -44,7 +44,7 @@ test.describe("Ordenação de Produtos", () => {
 		const inventory = new InventoryPage(page);
 
 		await inventory.sortBy("za");
-		const productNames = await inventory.getProductNames(page);
+		const productNames = await inventory.getProductNames();
 		const sortedByNameDesc = [...productNames].sort((a, b) => b.localeCompare(a));
 
 		expect(productNames).toEqual(sortedByNameDesc);
