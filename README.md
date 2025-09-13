@@ -6,7 +6,7 @@ This project contains automated tests for the [SauceDemo](https://www.saucedemo.
 
 ```
 SauceDemoTests/
-├── apresentação/          # Presentation files (e.g., videos)
+├── presentation/          # Presentation file
 ├── config/                # Configuration files (e.g., data.json)
 ├── pages/                 # Page Object Model (POM) classes
 ├── tests/                 # Test files
