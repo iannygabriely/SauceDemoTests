@@ -110,8 +110,8 @@ npx playwright test --headed
 
 ## Demo
 
-A demo video of the test execution is available in the `apresentação/` folder:
-- [sauce-demo-tests.mp4](./apresentação/sauce-demo-tests.mp4)
+A demo video of the test execution is available in the `presentation/` folder:
+- [sauce-demo-tests.txt](./apresentação/sauce-demo-tests.txt)
 
 ## Contributing
 
